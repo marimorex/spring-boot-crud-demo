@@ -2,8 +2,12 @@ package com.demo.cruddemo.dao;
 
 import jakarta.transaction.Transactional;
 
-public interface IGenericDao<T> {
+import java.util.List;
 
-    void create(T t);
-    T findById(Object id);
+public interface IGenericDao<E> {
+
+    void create(E entity);
+    E findById(Object id);
+
+    List<E> findAll();
 }
