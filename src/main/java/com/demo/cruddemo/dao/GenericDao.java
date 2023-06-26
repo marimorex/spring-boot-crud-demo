@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class GenericDao<E> implements IGenericDao<E>{
-    @PersistenceContext
+        @PersistenceContext
     private EntityManager entityManager;
     private Class<E> type;
     public GenericDao() {
@@ -37,5 +37,15 @@ public class GenericDao<E> implements IGenericDao<E>{
 
         TypedQuery<E> query = entityManager.createQuery(strQuery.toString(),type);
         return  query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void update(E entity) { entityManager.merge(entity); }
+
+    @Override
+    @Transactional
+    public void delete(Object id) {
+        entityManager.remove(findById(id));
     }
 }

@@ -24,9 +24,12 @@ public class CruddemoApplication {
 			//createStudent(studentDAO);
 			//getStudentById(studentDAO);
 			//getAllStudents(studentDAO);
-			getStudentByLastName(studentDAO);
+			//getStudentByLastName(studentDAO);
+			//updateStudent(studentDAO);
+			deleteStudent(studentDAO);
 		};
 	}
+
 	private void createStudent(StudentDao studentDAO){
 		System.out.println("Creating new Student object ...");
 		Student tempStudent = new Student("Maria", "Moreno", "maria@some.com");
@@ -56,6 +59,24 @@ public class CruddemoApplication {
 			System.out.println(theStudent );
 		}
 	}
+
+	private void updateStudent(StudentDao studentDAO) {
+		// get student by id
+		Student theStudent = studentDAO.findById(1);
+		// change data of student
+		theStudent.setLastName("Exposito");
+		// save changes
+		studentDAO.update(theStudent);
+
+		System.out.println(theStudent.toString());
+
+	}
+
+	private void deleteStudent(StudentDao studentDAO) {
+		System.out.println("delete student with id 1");
+		studentDAO.delete(1);
+	}
+
 
 
 }

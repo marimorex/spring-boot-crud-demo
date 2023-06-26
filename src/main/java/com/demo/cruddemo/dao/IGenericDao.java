@@ -10,4 +10,6 @@ public interface IGenericDao<E> {
     E findById(Object id);
 
     List<E> findAll();
+    void update(E entity);
+    void delete(Object id);
 }
