@@ -32,7 +32,7 @@ public class GenericDao<E> implements IGenericDao<E>{
     @Override
     public List<E> findAll() {
         final StringBuilder strQuery = new StringBuilder("FROM ");
-        strQuery.append( type.getName());
+        strQuery.append(type.getName());
         System.out.println("This is the strQuery : " + strQuery);
 
         TypedQuery<E> query = entityManager.createQuery(strQuery.toString(),type);
@@ -47,5 +47,16 @@ public class GenericDao<E> implements IGenericDao<E>{
     @Transactional
     public void delete(Object id) {
         entityManager.remove(findById(id));
+    }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        final StringBuilder strQuery = new StringBuilder("DELETE FROM ");
+        strQuery.append(type.getName());
+        System.out.println("This is the strQuery : " + strQuery);
+
+        return entityManager.createQuery(strQuery.toString()).executeUpdate();
+
     }
 }

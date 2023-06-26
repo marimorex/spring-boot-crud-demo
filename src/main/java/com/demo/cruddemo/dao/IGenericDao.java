@@ -12,4 +12,5 @@ public interface IGenericDao<E> {
     List<E> findAll();
     void update(E entity);
     void delete(Object id);
+    int deleteAll();
 }

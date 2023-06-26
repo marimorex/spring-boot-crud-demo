@@ -26,9 +26,11 @@ public class CruddemoApplication {
 			//getAllStudents(studentDAO);
 			//getStudentByLastName(studentDAO);
 			//updateStudent(studentDAO);
-			deleteStudent(studentDAO);
+			//deleteStudent(studentDAO);
+			deleteAllStudents(studentDAO);
 		};
 	}
+
 
 	private void createStudent(StudentDao studentDAO){
 		System.out.println("Creating new Student object ...");
@@ -77,6 +79,11 @@ public class CruddemoApplication {
 		studentDAO.delete(1);
 	}
 
+	private void deleteAllStudents(StudentDao studentDAO) {
+		System.out.println("Delete All students");
+		int rows = studentDAO.deleteAll();
+		System.out.println("Deleted " + rows+ " students");
+	}
 
 
 }
