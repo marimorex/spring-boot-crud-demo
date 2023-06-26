@@ -21,13 +21,13 @@ public class CruddemoApplication {
 	public CommandLineRunner commandLineRunner(StudentDao studentDAO){
 		return runner -> {
 			System.out.println("Hello World");
-			//createStudent(studentDAO);
+			createStudent(studentDAO);
 			//getStudentById(studentDAO);
 			//getAllStudents(studentDAO);
 			//getStudentByLastName(studentDAO);
 			//updateStudent(studentDAO);
 			//deleteStudent(studentDAO);
-			deleteAllStudents(studentDAO);
+			//deleteAllStudents(studentDAO);
 		};
 	}
 
